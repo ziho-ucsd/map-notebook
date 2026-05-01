@@ -13,14 +13,23 @@ LABEL maintainer="UC San Diego ITS/ETS <ets-consult@ucsd.edu>"
 # 2) change to root to install packages
 USER root
 
-RUN apt-get -y install htop
+RUN apt-get -y install \ 
+  python3.10 \ 
+  python3-dev \
+  python3-distutils \
+  python3-tk \
+  python3-pip \
+  python3.10-venv \
+  libfuse2 \
+  graphviz \
+  libgraphviz-dev
 
 # 3) install packages using notebook user
 USER jovyan
 
 # RUN conda install -y scikit-learn
 
-RUN pip install --no-cache-dir networkx scipy
+# RUN pip install --no-cache-dir networkx scipy
 
 # Override command to disable running jupyter notebook at launch
 # CMD ["/bin/bash"]
